@@ -13,11 +13,15 @@ require 'pry'
 class KeysTest < MiniTest::Test
 
   def setup
-    @key_1 = Keys.new
+    @key_1 = Keys.new("02715")
   end
 
   def test_that_it_exists
     assert_instance_of Keys, @key_1
+  end
+
+  def test_attributes
+    assert_equal "02715", @key_1.key
   end
 
   def test_it_can_assign_values_to_keys
@@ -29,4 +33,10 @@ class KeysTest < MiniTest::Test
     }
     assert_equal expected, @key_1.assign_keys("02715")
   end
+
+  # def test_it_can_generate_random_key
+  #
+  #
+  #   assert_equal
+  # end
 end
