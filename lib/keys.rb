@@ -1,7 +1,8 @@
 class Keys
-
-  def initialize
-
+  attr_reader :key
+  
+  def initialize(key="")
+    @key = key
   end
 
   def assign_keys(key)
