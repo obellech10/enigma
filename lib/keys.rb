@@ -1,6 +1,6 @@
 class Keys
   attr_reader :key
-  
+
   def initialize(key="")
     @key = key
   end
@@ -20,4 +20,11 @@ class Keys
 
     key_values
   end
+
+  def generate_key
+    random_key = ""
+    5.times { |num| random_key << (rand(10)).to_s}
+    @key = random_key
+  end
+
 end
