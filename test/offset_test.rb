@@ -24,4 +24,15 @@ class OffsetTest < MiniTest::Test
   def test_attributes
     assert_equal "040895", @offset.date
   end
+
+  def test_that_it_can_assign_offsets_to_keys
+    expected = {
+      a: 1,
+      b: 0,
+      c: 2,
+      d: 5
+    }
+    assert_equal expected, @offset.assign_offset
+  end
+
 end
