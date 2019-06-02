@@ -24,5 +24,13 @@ class ShiftTest < MiniTest::Test
     assert_instance_of Shift, @shift
   end
 
-
+  def test_calculate_and_assign_shift_to_keys
+    expected = {
+      a: 3,
+      b: 27,
+      c: 73,
+      d: 20
+    }
+    assert_equal expected, @shift.assign_shift
+  end
 end
