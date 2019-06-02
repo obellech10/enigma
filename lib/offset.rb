@@ -6,6 +6,8 @@ class Offset
   end
 
   def assign_offset
+    # can add conditional here to check for a given date, if no date,
+    # assign todays date to @date and then call on squared_date method
     return if @date == ""
     offset_values = {
       a: 0,
