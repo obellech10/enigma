@@ -7,10 +7,10 @@ class Keys
 
   def assign_keys(key)
     key_values = {
-      a_key: 0,
-      b_key: 0,
-      c_key: 0,
-      d_key: 0
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0
     }
 
     key_values[:a_key] = (key.byteslice(0) + key.byteslice(1)).to_i

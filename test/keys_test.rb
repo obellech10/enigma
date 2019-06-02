@@ -27,10 +27,10 @@ class KeysTest < MiniTest::Test
 
   def test_it_can_assign_values_to_keys
     expected = {
-      a_key: 2,
-      b_key: 27,
-      c_key: 71,
-      d_key: 15
+      a: 2,
+      b: 27,
+      c: 71,
+      d: 15
     }
     assert_equal expected, @key_1.assign_keys("02715")
   end
