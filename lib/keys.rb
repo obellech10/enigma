@@ -5,7 +5,7 @@ class Keys
     @key = key
   end
 
-  def assign_keys(key)
+  def assign_keys
     key_values = {
       a: 0,
       b: 0,
@@ -13,10 +13,10 @@ class Keys
       d: 0
     }
 
-    key_values[:a_key] = (key.byteslice(0) + key.byteslice(1)).to_i
-    key_values[:b_key] = (key.byteslice(1) + key.byteslice(2)).to_i
-    key_values[:c_key] = (key.byteslice(2) + key.byteslice(3)).to_i
-    key_values[:d_key] = (key.byteslice(3) + key.byteslice(4)).to_i
+    key_values[:a] = (@key.byteslice(0) + @key.byteslice(1)).to_i
+    key_values[:b] = (@key.byteslice(1) + @key.byteslice(2)).to_i
+    key_values[:c] = (@key.byteslice(2) + @key.byteslice(3)).to_i
+    key_values[:d] = (@key.byteslice(3) + @key.byteslice(4)).to_i
 
     key_values
   end
