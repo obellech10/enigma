@@ -14,6 +14,7 @@ class KeysTest < MiniTest::Test
 
   def setup
     @key_1 = Keys.new("02715")
+    @key_2 = Keys.new
   end
 
   def test_that_it_exists
@@ -34,9 +35,11 @@ class KeysTest < MiniTest::Test
     assert_equal expected, @key_1.assign_keys("02715")
   end
 
-  # def test_it_can_generate_random_key
-  #
-  #
-  #   assert_equal
-  # end
+  def test_it_can_generate_random_key
+    random_key = stub(key: "04672")
+
+    @key_2.generate_key
+
+    assert_equal "04672", @key_2.key
+  end
 end
