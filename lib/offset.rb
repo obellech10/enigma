@@ -1,3 +1,5 @@
+require 'date'
+
 class Offset
   attr_reader :date
 
@@ -8,13 +10,8 @@ class Offset
   def assign_offset
     # can add conditional here to check for a given date, if no date,
     # assign todays date to @date and then call on squared_date method
-    return if @date == ""
-    offset_values = {
-      a: 0,
-      b: 0,
-      c: 0,
-      d: 0
-    }
+    generate_date if @date == ""
+    offset_values = Hash.new(0)
     squared_date
 
     offset_values[:a] = squared_date.byteslice(0).to_i
@@ -26,5 +23,9 @@ class Offset
 
   def squared_date
     ((@date.to_i * @date.to_i).to_s).slice(-4..-1)
+  end
+
+  def generate_date
+    @date = Date.today.strftime("%d%m%y")
   end
 end
