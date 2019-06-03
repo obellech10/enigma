@@ -11,5 +11,5 @@ class Enigma
       key: key_1.key,
       date: date_1.date
     }
-  end
+  end 
 end
