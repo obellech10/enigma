@@ -28,6 +28,6 @@ class ConvertTest < MiniTest::Test
   end
 
   def test_it_can_encrypt
-    assert_equal "keder ohulw", @convert.cipher("Hello World", [3,27,73,20])
+    assert_equal "keder ohulw", @convert.cipher([3,27,73,20])
   end
 end
