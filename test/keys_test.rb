@@ -38,7 +38,7 @@ class KeysTest < MiniTest::Test
 
   def test_it_can_generate_random_key
     skip
-    random_key = stub(key: "04672")
+    Kernel.stubs(:generate_key).returns("04672")
 
     @key_2.generate_key
 

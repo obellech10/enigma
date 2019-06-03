@@ -3,11 +3,12 @@ class Keys
 
   def initialize(key="")
     @key = key
+    # generate_key
   end
 
   def assign_keys
     generate_key if @key == ""
-    
+
     key_values = {
       a: 0,
       b: 0,
@@ -24,9 +25,7 @@ class Keys
   end
 
   def generate_key
-    random_key = ""
-    5.times { |num| random_key << (rand(10)).to_s}
-    @key = random_key
+    5.times { |num| @key << (rand(10)).to_s}
   end
 
 end
