@@ -37,11 +37,7 @@ class KeysTest < MiniTest::Test
   end
 
   def test_it_can_generate_random_key
-    skip
-    Kernel.stubs(:rand).returns("04672")
-
-    @key_2.generate_key
-
-    assert_equal "04672", @key_2.key
+    Keys.any_instance.stubs(:generate_key).returns("04672")
+    assert_equal "04672", @key_2.generate_key
   end
 end
