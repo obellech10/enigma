@@ -5,11 +5,11 @@ class Convert
     @message = message
   end
 
-  # def cipher(string, keys)
+  # def cipher(@message, shift)
   #   alphabet = ("a".."z").to_a << " "
   #   encrypted_word = ""
-  #   string.downcase.each_char.with_index do |char, i|
-  #     key = keys[i % keys.length]
+  #   @message.downcase.each_char.with_index do |char, i|
+  #     key = shift[i % shift.length]
   #     if key <= 27
   #       shifted_alpha = alphabet[key..-1] + alphabet[0...key]
   #     else
@@ -21,10 +21,10 @@ class Convert
   #   encrypted_word
   # end
 
-  def cipher(string, keys)
+  def cipher(shift)
     encrypted_word = ""
-    string.downcase.each_char.with_index do |char, i|
-      key = keys[i % keys.length]
+    @message.downcase.each_char.with_index do |char, i|
+      key = shift[i % shift.length]
       index = LETTER_TO_INDEX[char]
       if (key + index) <= 27
         encrypted_word << INDEX_TO_LETTER[index + key]
@@ -34,7 +34,6 @@ class Convert
       end
     end
     encrypted_word
-    # binding.pry
   end
 
 

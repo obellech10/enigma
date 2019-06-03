@@ -8,6 +8,7 @@ require 'mocha/minitest'
 require 'date'
 require './lib/enigma'
 require './lib/keys'
+require './lib/shift'
 require 'pry'
 
 class KeysTest < MiniTest::Test

@@ -6,6 +6,8 @@ class Keys
   end
 
   def assign_keys
+    generate_key if @key == ""
+    
     key_values = {
       a: 0,
       b: 0,
