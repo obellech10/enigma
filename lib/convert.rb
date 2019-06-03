@@ -5,36 +5,36 @@ class Convert
     @message = message
   end
 
-  # def cipher(@message, shift)
-  #   alphabet = ("a".."z").to_a << " "
-  #   encrypted_word = ""
-  #   @message.downcase.each_char.with_index do |char, i|
-  #     key = shift[i % shift.length]
-  #     if key <= 27
-  #       shifted_alpha = alphabet[key..-1] + alphabet[0...key]
-  #     else
-  #       adj_key = key % 27
-  #       shifted_alpha = alphabet[adj_key..-1] + alphabet[0...adj_key]
-  #     end
-  #     encrypted_word << shifted_alpha[alphabet.index(char)]
-  #   end
-  #   encrypted_word
-  # end
-
   def cipher(shift)
+    alphabet = ("a".."z").to_a << " "
     encrypted_word = ""
     @message.downcase.each_char.with_index do |char, i|
       key = shift[i % shift.length]
-      index = LETTER_TO_INDEX[char]
-      if (key + index) <= 27
-        encrypted_word << INDEX_TO_LETTER[index + key]
+      if key <= 27
+        shifted_alpha = alphabet[key..-1] + alphabet[0...key]
       else
-        adj_key = (key + index) % 27
-        encrypted_word << INDEX_TO_LETTER[adj_key]
+        adj_key = key % 27
+        shifted_alpha = alphabet[adj_key..-1] + alphabet[0...adj_key]
       end
+      encrypted_word << shifted_alpha[alphabet.index(char)]
     end
     encrypted_word
   end
+
+  # def cipher(shift)
+  #   encrypted_word = ""
+  #   @message.downcase.each_char.with_index do |char, i|
+  #     key = shift[i % shift.length]
+  #     index = LETTER_TO_INDEX[char]
+  #     if (key + index) <= 27
+  #       encrypted_word << INDEX_TO_LETTER[index + key]
+  #     else
+  #       adj_key = (key + index) % 27
+  #       encrypted_word << INDEX_TO_LETTER[adj_key]
+  #     end
+  #   end
+  #   encrypted_word
+  # end
 
 
 INDEX_TO_LETTER = {0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e", 5=>"f", 6=>"g",

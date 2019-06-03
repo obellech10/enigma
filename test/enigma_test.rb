@@ -29,4 +29,11 @@ class EnigmaTest < MiniTest::Test
                 date: "040895"}
     assert_equal expected, @enigma.encrypt("Hello World", "02715", "040895")
   end
+
+  def test_that_it_can_encrypt_with_key_no_date
+    expected = {decryption: "mfhatasdwm ",
+      key: "02715",
+      date: "030619"}
+      assert_equal expected, @enigma.encrypt("Hello World", "02715")
+  end
 end
