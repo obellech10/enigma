@@ -17,6 +17,8 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new
+    @key = Keys.new
+    @offset = Offset.new
   end
 
   def test_that_it_exists
@@ -35,5 +37,27 @@ class EnigmaTest < MiniTest::Test
       key: "02715",
       date: "030619"}
       assert_equal expected, @enigma.encrypt("Hello World", "02715")
+  end
+
+  def test_that_it_can_encrypt_with_no_key_no_date
+    Keys.any_instance.stubs(:key).returns("04672")
+    Offset.any_instance.stubs(:date).returns("020619")
+    @shift = Shift.new("04672",{
+      a: 1,
+      b: 0,
+      c: 2,
+      d: 5
+    })
+    Shift.any_instance.stubs(:assign_shift).returns({
+      a: 3,
+      b: 1,
+      c: 6,
+      d: 1
+    })
+
+    expected = {decryption: "kfrmrabpumj",
+      key: "04672",
+      date: "020619"}
+      assert_equal expected, @enigma.encrypt("Hello World")
   end
 end
