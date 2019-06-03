@@ -15,6 +15,7 @@ class OffsetTest < MiniTest::Test
 
   def setup
     @offset = Offset.new("040895")
+    @offset_2 = Offset.new
   end
 
   def test_that_it_exists
@@ -36,7 +37,8 @@ class OffsetTest < MiniTest::Test
   end
 
   def test_that_it_can_generate_date
-    assert_equal "030619", @offset.generate_date
+    Offset.any_instance.stubs(:generate_date).returns("020619")
+    assert_equal "020619", @offset.generate_date
   end
 
 end
