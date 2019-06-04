@@ -13,7 +13,7 @@ enigma = Enigma.new
 cipher = enigma.encrypt(encrypt_msg.message.rstrip)
 
 encrypted = File.open(ARGV[1], "w")
-encrypted.write(cipher[:decryption])
+encrypted.write(cipher[:encryption])
 encrypted.close
 
 p "Created 'encrypted.txt' with the key #{cipher[:key]} and date #{cipher[:date]}"
