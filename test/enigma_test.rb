@@ -26,14 +26,14 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_that_it_can_encrypt_with_key_date
-    expected = {decryption: "keder ohulw",
+    expected = {encryption: "keder ohulw",
                 key: "02715",
                 date: "040895"}
     assert_equal expected, @enigma.encrypt("Hello World", "02715", "040895")
   end
 
   def test_that_it_can_encrypt_with_key_no_date
-    expected = {decryption: "mfhatasdwm ",
+    expected = {encryption: "mfhatasdwm ",
       key: "02715",
       date: "030619"}
       assert_equal expected, @enigma.encrypt("Hello World", "02715")
@@ -55,9 +55,16 @@ class EnigmaTest < MiniTest::Test
       d: 1
     })
 
-    expected = {decryption: "kfrmrabpumj",
+    expected = {encryption: "kfrmrabpumj",
       key: "04672",
       date: "020619"}
       assert_equal expected, @enigma.encrypt("Hello World")
+  end
+
+  def test_that_it_can_decrypt_with_key_date
+    expected = {decryption: "hello world",
+      key: "02715",
+      date: "040895"}
+      assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 end
