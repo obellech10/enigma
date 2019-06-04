@@ -9,14 +9,18 @@ class Convert
   def cipher(shift)
     encrypted_word = ""
     @message.downcase.each_char.with_index do |char, i|
-      key = shift[i % shift.length]
-      if key <= 27
-        shifted_alpha = @alphabet[key..-1] + @alphabet[0...key]
+      if !@alphabet.include?(char)
+        encrypted_word << char
       else
-        adj_key = key % 27
-        shifted_alpha = @alphabet[adj_key..-1] + @alphabet[0...adj_key]
+        key = shift[i % shift.length]
+        if key <= 27
+          shifted_alpha = @alphabet[key..-1] + @alphabet[0...key]
+        else
+          adj_key = key % 27
+          shifted_alpha = @alphabet[adj_key..-1] + @alphabet[0...adj_key]
+        end
+          encrypted_word << shifted_alpha[@alphabet.index(char)]
       end
-      encrypted_word << shifted_alpha[@alphabet.index(char)]
     end
     encrypted_word
   end
@@ -24,14 +28,18 @@ class Convert
   def decipher(shift)
     decrypted_word = ""
     @message.downcase.each_char.with_index do |char, i|
-      key = shift[i % shift.length]
-      if key <= 27
-        shifted_alpha = @alphabet[0...key] + @alphabet[key..-1]
-        decrypted_word << shifted_alpha[@alphabet.index(char)-key]
+      if !@alphabet.include?(char)
+        decrypted_word << char
       else
-        adj_key = key % 27
-        shifted_alpha = @alphabet[0...adj_key] + @alphabet[adj_key..-1]
-        decrypted_word << shifted_alpha[@alphabet.index(char)-adj_key]
+        key = shift[i % shift.length]
+        if key <= 27
+          shifted_alpha = @alphabet[0...key] + @alphabet[key..-1]
+          decrypted_word << shifted_alpha[@alphabet.index(char)-key]
+        else
+          adj_key = key % 27
+          shifted_alpha = @alphabet[0...adj_key] + @alphabet[adj_key..-1]
+          decrypted_word << shifted_alpha[@alphabet.index(char)-adj_key]
+        end
       end
     end
     decrypted_word
