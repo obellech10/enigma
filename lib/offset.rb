@@ -20,7 +20,7 @@ class Offset
   end
 
   def squared_date
-    ((@date.to_i * @date.to_i).to_s).slice(-4..-1)
+    @sq_date ||= ((@date.to_i * @date.to_i).to_s).slice(-4..-1)
   end
 
   def generate_date
