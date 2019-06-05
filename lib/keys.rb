@@ -3,10 +3,10 @@ class Keys
 
   def initialize(key="")
     @key = key
+    generate_key if @key == ""
   end
 
   def assign_keys
-    generate_key if @key == ""
     key_values = Hash.new(0)
 
     key_values[:a] = (@key.byteslice(0) + @key.byteslice(1)).to_i
