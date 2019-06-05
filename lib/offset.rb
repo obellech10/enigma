@@ -5,10 +5,10 @@ class Offset
 
   def initialize(date="")
     @date = date
+    generate_date if @date == ""
   end
 
   def assign_offset
-    generate_date if @date == ""
     offset_values = Hash.new(0)
     squared_date
 
