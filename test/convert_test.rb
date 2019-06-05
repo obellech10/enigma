@@ -31,6 +31,11 @@ class ConvertTest < MiniTest::Test
     assert_equal "keder ohulw", @convert.cipher([3,27,73,20])
   end
 
+  def test_it_can_decrypt
+    convert_2 = Convert.new("keder ohulw")
+    assert_equal "hello world", convert_2.decipher([3,27,73,20])
+  end
+
   def test_it_can_encrypt_with_special_char
     convert_2 = Convert.new("Hello! World!")
     assert_equal "keder!sprrdx!", convert_2.cipher([3,27,73,20])

@@ -15,7 +15,6 @@ class KeysTest < MiniTest::Test
 
   def setup
     @key_1 = Keys.new("02715")
-    @key_2 = Keys.new
   end
 
   def test_that_it_exists
@@ -37,7 +36,9 @@ class KeysTest < MiniTest::Test
   end
 
   def test_it_can_generate_random_key
-    Keys.any_instance.stubs(:generate_key).returns("04672")
-    assert_equal "04672", @key_2.generate_key
+    key_2 = Keys.new
+    Keys.any_instance.stubs(:key).returns("04672")
+    key_2.generate_key
+    assert_equal "04672", key_2.key
   end
 end
